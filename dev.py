@@ -1,6 +1,13 @@
+#!/usr/bin/env python3
 import psutil
 from os import system
+import time
 from time import sleep
+import datetime
+
+def uptime():
+    return datetime.timedelta(seconds=int(time.time() - psutil.boot_time()))
+
 
 # CPU usage + graph
 # Memory usage + graph
@@ -31,7 +38,12 @@ while True:
     # for proc in psutil.process_iter(['pid', 'name', 'username']):
     #    print(proc.info)
 
+    # uptime
+    print("")
+    print("uptime: " + str(uptime()))
 
+    # network data
+    print(psutil.net_io_counters(pernic=False, nowrap=True)) # first two items in tuple are bytes sent and bytes received
 
     sleep(1)
     system("clear")
