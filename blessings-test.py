@@ -1,8 +1,34 @@
-from blessings import Terminal
+#!/usr/bin/env python3 
 
-term = Terminal()
-print(term.red + term.on_green + 'Red on green? Ick!' + term.normal)
-print(term.bright_red + term.on_bright_blue + 'This is even worse!' + term.normal)
-with term.location():
-    print(term.move(1, 1) + 'Hi')
-    print(term.move(9, 9) + 'Mom')
+from blessings import Terminal
+import psutil_data as data
+import psutil
+from time import sleep
+from os import system
+
+t = Terminal()
+
+with t.location(t.width//2, t.height - 1):
+    print('This is at the bottom.')
+
+threads = data.cpu_threads()
+currentWidth = 0
+currentHeight = 0
+while True:
+    cpu_percents = data.cpu_percent_ints()
+    
+    # Print bars representing thread usage
+    for i in range (0, threads):
+        with t.location(1, 1 + i):
+            if i < 9:
+                print("CPU thread " + str(i+1) + "  [", end='')
+            else:
+                print("CPU thread " + str(i+1) + " [", end='')
+            for j in range (1, cpu_percents[i]):
+                print("=", end='')
+            for k in range (cpu_percents[i], 100):
+                print("-", end='')
+            print("]")
+
+    sleep(1)
+    system("clear")

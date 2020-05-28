@@ -63,40 +63,40 @@ def average_temp():
 # Network usage (least important)
 # List of processes
 
-while True:
-    print("---- SYSTEM DATA ----")
+# while True:
+#     print("---- SYSTEM DATA ----")
 
-    print(psutil.cpu_count(False)) # physical cores
-    print(psutil.cpu_count(True)) # threads
+#     print(psutil.cpu_count(False)) # physical cores
+#     print(psutil.cpu_count(True)) # threads
 
-    # cpu percentage
-    print(psutil.cpu_percent(None, True))
+#     # cpu percentage
+#     print(psutil.cpu_percent(None, True))
 
-    # memory 
-    print(psutil.virtual_memory())
-    print(psutil.swap_memory()) # swap
+#     # memory 
+#     print(psutil.virtual_memory())
+#     print(psutil.swap_memory()) # swap
 
-    # disk partitions
-    print(psutil.disk_partitions(all=False))
-    for i in psutil.disk_partitions(all=False):
-        print(i.mountpoint + " | " + str(psutil.disk_usage(i.mountpoint).total))
+#     # disk partitions
+#     print(psutil.disk_partitions(all=False))
+#     for i in psutil.disk_partitions(all=False):
+#         print(i.mountpoint + " | " + str(psutil.disk_usage(i.mountpoint).total))
 
-    # processes list
-    # for proc in psutil.process_iter(['pid', 'name', 'username']):
-    #    print(proc.info)
+#     # processes list
+#     # for proc in psutil.process_iter(['pid', 'name', 'username']):
+#     #    print(proc.info)
 
-    # uptime
-    print("")
-    print("uptime: " + str(uptime()))
+#     # uptime
+#     print("")
+#     print("uptime: " + str(uptime()))
 
-    # network data
-    print(psutil.net_io_counters(pernic=False, nowrap=True)) # first two items in tuple are bytes sent and bytes received
+#     # network data
+#     print(psutil.net_io_counters(pernic=False, nowrap=True)) # first two items in tuple are bytes sent and bytes received
 
-    print("")
-    print("temps")
-    print(psutil.sensors_temperatures(fahrenheit=False))
+#     print("")
+#     print("temps")
+#     print(psutil.sensors_temperatures(fahrenheit=False))
 
-    print(pid_memory_usage(20339))
+#     print(pid_memory_usage(20339))
 
-    sleep(1)
-    system("clear")
+#     sleep(1)
+#     system("clear")
